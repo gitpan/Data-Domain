@@ -1,0 +1,9 @@
+Build.pl
+Changes
+lib/Data/Domain.pm
+MANIFEST			This list of files
+README
+t/data-domain.t
+t/pod-coverage.t
+t/pod.t
+META.yml
