@@ -1,5 +1,8 @@
 Revision history for Data-Domain
 
+0.03    23.02.2006
+  - Bug fix in method msgs()
+
 0.02    27.12.2006
   - Documentation restructured and completed (esp. -messages option)
   - minor modifications in msg() method

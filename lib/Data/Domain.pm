@@ -6,7 +6,7 @@ use warnings;
 use Exporter qw/import/;
 use Carp;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 my @builtin_domains = qw/Whatever
                          Num Int Date Time String
@@ -151,7 +151,9 @@ sub msg {
       /CODE/ and return $self->{-messages}->($msg_id, @args); # user function
       /^$/   and return "$name: $msgs";                       # user constant string
       /HASH/ and do { $msg =  $self->{-messages}{$msg_id}     # user hash of msgs
-                        and return sprintf "$name: $msg", @args; };
+                        and return sprintf "$name: $msg", @args;
+                      last; # not found in this hash - revert to $global_msgs
+                    };
       croak "invalid -messages option";                       # otherwise
     }
   }
