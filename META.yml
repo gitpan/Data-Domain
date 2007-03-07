@@ -1,21 +1,22 @@
 ---
 name: Data-Domain
-version: 0.03
+version: 0.04
 author:
   - 'Laurent Dami <laurent.dami@justice.ge.ch>'
 abstract: Data description and validation
 license: perl
 resources:
   license: http://dev.perl.org/licenses/
-build_requires:
+requires:
   Date::Calc: 0
   List::Util: 0
   Scalar::Util: 0
+build_requires:
   Test::More: 0
 provides:
   Data::Domain:
     file: lib/Data/Domain.pm
-    version: 0.03
+    version: 0.04
   Data::Domain::Date:
     file: lib/Data/Domain.pm
   Data::Domain::Enum:
