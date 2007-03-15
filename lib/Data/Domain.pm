@@ -6,7 +6,7 @@ use warnings;
 use Exporter qw/import/;
 use Carp;
 
-our $VERSION = "0.04";
+our $VERSION = "0.05";
 
 my @builtin_domains = qw/Whatever
                          Num Int Date Time String
@@ -761,16 +761,21 @@ sub _inspect {
   my @anys = UNIVERSAL::isa($self->{-any}, 'ARRAY') ? @{$self->{-any}} 
                : $self->{-any} ? ($self->{-any}) : ();
 
+  # if there is an 'any' condition, there must be data to inspect
+  return $self->msg(ANY => ($anys[0]{-name} || $anys[0]->subclass))
+      if @anys and not $n_data > $n_items;
+
+  # inspect the remaining data for all 'any' conditions
  ANYS:
   foreach my $any (@anys) {
-
+    my $subdomain;
     for (my $i = $n_items; $i < $n_data; $i++) {
       local $context->{path} = [@{$context->{path}}, $i];
-      my $subdomain = UNIVERSAL::isa($any, 'CODE') ? $any->($context) : $any;
+      $subdomain = UNIVERSAL::isa($any, 'CODE') ? $any->($context) : $any;
       my $error = $subdomain->inspect($data->[$i], $context);
       next ANYS if not $error;
     }
-    return $self->msg(ANY => ($self->{-name} || $self->subclass));
+    return $self->msg(ANY => ($subdomain->{-name} || $subdomain->subclass));
   }
 
   return; # OK, no error

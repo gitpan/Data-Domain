@@ -1,6 +1,6 @@
 ---
 name: Data-Domain
-version: 0.04
+version: 0.05
 author:
   - 'Laurent Dami <laurent.dami@justice.ge.ch>'
 abstract: Data description and validation
@@ -16,7 +16,7 @@ build_requires:
 provides:
   Data::Domain:
     file: lib/Data/Domain.pm
-    version: 0.04
+    version: 0.05
   Data::Domain::Date:
     file: lib/Data/Domain.pm
   Data::Domain::Enum:
