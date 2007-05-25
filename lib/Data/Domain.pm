@@ -6,7 +6,7 @@ use warnings;
 use Exporter qw/import/;
 use Carp;
 
-our $VERSION = "0.05";
+our $VERSION = "0.08";
 
 my @builtin_domains = qw/Whatever
                          Num Int Date Time String
@@ -194,7 +194,7 @@ sub _check_range {
   if (!$ignore_check and defined($self->{$min_field}) 
                      and defined($self->{$max_field})) {
     $self->{$min_field} <= $self->{$max_field}
-      or croak "$name: incoherent min/max values";
+      or croak "$name: incompatible min/max values";
   }
 }
 
@@ -383,7 +383,7 @@ sub new {
   $self->_check_range(qw/-range -min -max don_t_check_order/);
   if ($self->{-min} and $self->{-max} and
         $self->{-min} gt $self->{-max}) {
-    croak "String: incoherent min/max values";
+    croak "String: incompatible min/max values";
   }
 
   $self->_check_range(qw/-length -min_length -max_length/);
@@ -449,7 +449,8 @@ my $date_parser = \&Decode_Date_EU;
 #----------------------------------------------------------------------
 sub _print_date {
   my $date = shift;
-  return ref($date) ? Date_to_Text(@$date) : $date;
+  $date = _expand_dynamic_date($date);
+  return Date_to_Text(@$date);
 }
 
 
@@ -511,7 +512,7 @@ sub new {
   # check order of boundaries
   if ($self->{-min} and $self->{-max} and 
         _date_cmp($self->{-min}, $self->{-max}) > 0) {
-    croak "Date: incoherent min/max values";
+    croak "Date: incompatible min/max values";
   }
 
   # parse dates in the exclusion set into internal representation
@@ -580,14 +581,30 @@ sub _valid_time {
   return ($h <= 23 && $m <= 59 && $s <= 59);
 }
 
+
+sub _expand_dynamic_time {
+  my $time = shift;
+  if (not ref $time) {
+    $time eq 'now' or croak "unexpected time : $time";
+    $time = [(localtime)[2, 1, 0]];
+  }
+  return $time;
+}
+
+
 sub _time_cmp {
-  my ($t1, $t2) = @_;
-  $t2 = [(localtime)[2, 1, 0]] if $t2 eq 'now';
+  my ($t1, $t2) = map {_expand_dynamic_time($_)} @_;
 
   return  $t1->[0]       <=>  $t2->[0]        # hours
       || ($t1->[1] || 0) <=> ($t2->[1] || 0)  # minutes
       || ($t1->[2] || 0) <=> ($t2->[2] || 0); # seconds
 }
+
+sub _print_time {
+  my $time = _expand_dynamic_time(shift);
+  return sprintf "%02d:%02d:%02d", @$time;
+}
+
 
 sub new {
   my $class = shift;
@@ -610,7 +627,7 @@ sub new {
   # check order of boundaries
   if ($self->{-min} and $self->{-max} and 
         _time_cmp($self->{-min}, $self->{-max}) > 0) {
-    croak "Time: incoherent min/max values";
+    croak "Time: incompatible min/max values";
   }
 
   return $self;
@@ -626,12 +643,12 @@ sub _inspect {
 
   if (defined $self->{-min}) {
     _time_cmp(\@t, $self->{-min}) < 0
-      and return $self->msg(TOO_SMALL => $data);
+      and return $self->msg(TOO_SMALL => _print_time($self->{-min}));
   }
 
   if (defined $self->{-max}) {
     _time_cmp(\@t, $self->{-max}) > 0
-      and return $self->msg(TOO_BIG => $data);
+      and return $self->msg(TOO_BIG => _print_time($self->{-max}));
   }
 
   return;
@@ -1450,7 +1467,7 @@ another element), then we need to I<lazily> construct the domain.
 Consider for example a struct in which the value of field C<date_end> 
 must be greater than C<date_begin> : 
 the subdomain for C<date_end> can only be constructed 
-when the argument to <-min> is known, namely when
+when the argument to C<-min> is known, namely when
 the domain inspects an actual data structure.
 
 Lazy domain construction is achieved by supplying a function reference
@@ -1476,9 +1493,9 @@ the overall root of the inspected data
 
 =item path
 
-the sequence of keys or array indices that led to the current 
+the sequence of keys or array indices that led to the current
 data node. With that information, the subdomain is able to jump
-to other ancestor or sibling data node within the tree, with 
+to other ancestor or sibling data nodes within the tree, with
 help of the L<node_from_path> function.
 
 =item flat
