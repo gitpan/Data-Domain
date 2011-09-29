@@ -1,45 +1,59 @@
 ---
-name: Data-Domain
-version: 0.14
+abstract: 'Data description and validation'
 author:
   - 'Laurent Dami <laurent.dami@justice.ge.ch>'
-abstract: Data description and validation
+build_requires:
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110930'
 license: perl
-resources:
-  license: http://dev.perl.org/licenses/
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Data-Domain
+provides:
+  Data::Domain:
+    file: lib/Data/Domain.pm
+    version: 0.15
+  Data::Domain::Date:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Empty:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Enum:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Int:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::List:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Num:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::One_of:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::String:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Struct:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Time:
+    file: lib/Data/Domain.pm
+    version: 0
+  Data::Domain::Whatever:
+    file: lib/Data/Domain.pm
+    version: 0
 requires:
   Date::Calc: 0
   List::Util: 0
   Scalar::Util: 0
-build_requires:
-  Test::More: 0
-provides:
-  Data::Domain:
-    file: lib/Data/Domain.pm
-    version: 0.14
-  Data::Domain::Date:
-    file: lib/Data/Domain.pm
-  Data::Domain::Empty:
-    file: lib/Data/Domain.pm
-  Data::Domain::Enum:
-    file: lib/Data/Domain.pm
-  Data::Domain::Int:
-    file: lib/Data/Domain.pm
-  Data::Domain::List:
-    file: lib/Data/Domain.pm
-  Data::Domain::Num:
-    file: lib/Data/Domain.pm
-  Data::Domain::One_of:
-    file: lib/Data/Domain.pm
-  Data::Domain::String:
-    file: lib/Data/Domain.pm
-  Data::Domain::Struct:
-    file: lib/Data/Domain.pm
-  Data::Domain::Time:
-    file: lib/Data/Domain.pm
-  Data::Domain::Whatever:
-    file: lib/Data/Domain.pm
-generated_by: Module::Build version 0.2808
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.15
