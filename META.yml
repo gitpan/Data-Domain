@@ -1,5 +1,5 @@
 ---
-abstract: 'Data description and validation'
+abstract: Data description and validation
 author:
   - 'Laurent Dami <laurent.dami@justice.ge.ch>'
 build_requires:
@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,7 +16,7 @@ name: Data-Domain
 provides:
   Data::Domain:
     file: lib/Data/Domain.pm
-    version: 0.15
+    version: 0.16
   Data::Domain::Date:
     file: lib/Data/Domain.pm
     version: 0
@@ -56,4 +56,4 @@ requires:
   Scalar::Util: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.15
+version: 0.16
