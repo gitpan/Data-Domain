@@ -5,9 +5,9 @@ author:
 build_requires:
   Test::More: 0
 configure_requires:
-  Module::Build: 0.38
+  Module::Build: 0.40
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,7 +16,10 @@ name: Data-Domain
 provides:
   Data::Domain:
     file: lib/Data/Domain.pm
-    version: 0.16
+    version: 1.00
+  Data::Domain::All_of:
+    file: lib/Data/Domain.pm
+    version: 0
   Data::Domain::Date:
     file: lib/Data/Domain.pm
     version: 0
@@ -53,7 +56,10 @@ provides:
 requires:
   Date::Calc: 0
   List::Util: 0
+  Scalar::Does: 0
   Scalar::Util: 0
+  Sub::Exporter: 0
+  Try::Tiny: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.16
+version: 1.00
