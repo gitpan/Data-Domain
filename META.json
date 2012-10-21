@@ -31,14 +31,15 @@
             "Scalar::Does" : 0,
             "Scalar::Util" : 0,
             "Sub::Exporter" : 0,
-            "Try::Tiny" : 0
+            "Try::Tiny" : 0,
+            "perl" : "5.010001"
          }
       }
    },
    "provides" : {
       "Data::Domain" : {
          "file" : "lib/Data/Domain.pm",
-         "version" : "1.00"
+         "version" : "1.01"
       },
       "Data::Domain::All_of" : {
          "file" : "lib/Data/Domain.pm",
@@ -95,5 +96,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "1.00"
+   "version" : "1.01"
 }
