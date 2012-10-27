@@ -4,7 +4,7 @@
       "Laurent Dami <laurent.dami@justice.ge.ch>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : 0
+            "Test::More" : "0"
          }
       },
       "configure" : {
@@ -26,12 +26,13 @@
       },
       "runtime" : {
          "requires" : {
-            "Date::Calc" : 0,
-            "List::Util" : 0,
-            "Scalar::Does" : 0,
-            "Scalar::Util" : 0,
-            "Sub::Exporter" : 0,
-            "Try::Tiny" : 0,
+            "Date::Calc" : "0",
+            "List::Util" : "0",
+            "Scalar::Does" : "0.007",
+            "Scalar::Util" : "0",
+            "Sub::Exporter" : "0",
+            "Try::Tiny" : "0",
+            "autouse" : "0",
             "perl" : "5.010001"
          }
       }
@@ -39,7 +40,7 @@
    "provides" : {
       "Data::Domain" : {
          "file" : "lib/Data/Domain.pm",
-         "version" : "1.01"
+         "version" : "1.02"
       },
       "Data::Domain::All_of" : {
          "file" : "lib/Data/Domain.pm",
@@ -57,11 +58,19 @@
          "file" : "lib/Data/Domain.pm",
          "version" : 0
       },
+      "Data::Domain::Handle" : {
+         "file" : "lib/Data/Domain.pm",
+         "version" : 0
+      },
       "Data::Domain::Int" : {
          "file" : "lib/Data/Domain.pm",
          "version" : 0
       },
       "Data::Domain::List" : {
+         "file" : "lib/Data/Domain.pm",
+         "version" : 0
+      },
+      "Data::Domain::Nat" : {
          "file" : "lib/Data/Domain.pm",
          "version" : 0
       },
@@ -96,5 +105,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "1.01"
+   "version" : "1.02"
 }
