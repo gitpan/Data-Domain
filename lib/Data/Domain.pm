@@ -4,6 +4,7 @@ package Data::Domain; # documentation at end of file
 use 5.010;
 use strict;
 use warnings;
+use experimental 'smartmatch';
 use Carp;
 use Data::Dumper;
 use Scalar::Does 0.007;
@@ -12,7 +13,7 @@ use Try::Tiny;
 use List::MoreUtils qw/part natatime/;
 use overload '~~' => \&_matches, '""' => \&_stringify;
 
-our $VERSION = "1.03";
+our $VERSION = "1.04";
 
 our $MESSAGE;        # global var for last message from ~~ (see '_matches')
 our $MAX_DEEP = 100; # limit for recursive calls to inspect()
@@ -1152,6 +1153,7 @@ package Data::Domain::Struct;
 #======================================================================
 use strict;
 use warnings;
+use experimental 'smartmatch';
 use Carp;
 use Scalar::Does qw/does/;
 our @ISA = 'Data::Domain';
@@ -2671,7 +2673,9 @@ L<Jifty::DBI|Jifty::DBI>,
 L<Data::Constraint|Data::Constraint>,
 L<Declare::Constraints::Simple|Declare::Constraints::Simple>,
 L<Moose::Manual::Types>,
-L<Smart::Match>, L<Test::Deep>, L<Params::Validate>.
+L<Smart::Match>, L<Test::Deep>, L<Params::Validate>,
+L<Validation::Class>.
+
 Among those, C<Declare::Constraints::Simple> is the closest to
 C<Data::Domain>, because it is also designed to deal with
 substructures; yet it has a different approach to combinations

@@ -10,6 +10,7 @@ my $builder = Module::Build->new(
     requires => {
       'perl'          => "5.010001",
       'autouse'       => 0,
+      'experimental'  => 0,
       'Scalar::Util'  => 0,
       'List::Util'    => 0,
       'Date::Calc'    => 0,
@@ -21,6 +22,11 @@ my $builder = Module::Build->new(
       'Test::More'   => 0,
     },
     add_to_cleanup      => [ 'Data-Domain-*' ],
+    meta_merge => {
+      resources => {
+        repository => 'https://github.com/damil/Data-Domain',
+       }
+     },
 );
 
 $builder->create_build_script();
