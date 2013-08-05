@@ -16,7 +16,7 @@ name: Data-Domain
 provides:
   Data::Domain:
     file: lib/Data/Domain.pm
-    version: 1.04
+    version: 1.05
   Data::Domain::All_of:
     file: lib/Data/Domain.pm
     version: 0
@@ -72,4 +72,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/damil/Data-Domain
-version: 1.04
+version: 1.05
