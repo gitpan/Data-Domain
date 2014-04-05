@@ -4,7 +4,7 @@
       "Laurent Dami <laurent.dami@justice.ge.ch>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4004, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Module::Build version 0.4204",
    "license" : [
       "perl_5"
    ],
@@ -21,13 +21,13 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.42"
          }
       },
       "runtime" : {
          "requires" : {
             "Date::Calc" : "0",
-            "List::Util" : "0",
+            "List::MoreUtils" : "0",
             "Scalar::Does" : "0.007",
             "Scalar::Util" : "0",
             "Sub::Exporter" : "0",
@@ -41,63 +41,49 @@
    "provides" : {
       "Data::Domain" : {
          "file" : "lib/Data/Domain.pm",
-         "version" : "1.05"
+         "version" : "1.06"
       },
       "Data::Domain::All_of" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Date" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Empty" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Enum" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Handle" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Int" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::List" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Nat" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Num" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::One_of" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::String" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Struct" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Time" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       },
       "Data::Domain::Whatever" : {
-         "file" : "lib/Data/Domain.pm",
-         "version" : 0
+         "file" : "lib/Data/Domain.pm"
       }
    },
    "release_status" : "stable",
@@ -109,5 +95,5 @@
          "url" : "https://github.com/damil/Data-Domain"
       }
    },
-   "version" : "1.05"
+   "version" : "1.06"
 }
